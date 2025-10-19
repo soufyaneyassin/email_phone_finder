@@ -17,7 +17,7 @@ email_reg = re.compile(r'''(
                   [a-zA-Z0-9._%+-]+ # username
                    @        # @ symbol
                   [a-zA-z0-9.-]+ # domain name
-                  (\.[a-zA-Z]{2,4}) 
+                  \.[a-zA-Z]{2,4}
                        )''', re.VERBOSE)
 
 # lets get the text from the clipboard
@@ -25,10 +25,10 @@ email_reg = re.compile(r'''(
 text = str(pyperclip.paste())
 matches = []
 for groups in phone_reg.findall(text):
-    phone = '-'.join([groups[1], groups[3], groups[5]])
-    if groups[6] != "":
-        phone += " x" + groups[6]
-    matches.append(phone)
+    # phone = '-'.join([groups[1], groups[3], groups[5]])
+    # if groups[6] != "":
+    #     phone += " x" + groups[6]
+    matches.append(groups[0])
 
 for groups in email_reg.findall(text):
     matches.append(groups)
